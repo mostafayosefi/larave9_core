@@ -6,12 +6,14 @@ use Validator;
 use App\Models\User;
 use App\Models\Admin;
 use App\Http\Requests;
+use App\Models\Setting;
+use App\Models\Txtdese;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
-
 use Illuminate\Support\Facades\Session ;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -50,6 +52,8 @@ class AdminAuthController extends Controller
     public function getLogin()
     {
 
+
+
   if (Auth::guard('admin')->user()) {
 return redirect()->route('admin.dashboard');
         }
@@ -63,9 +67,10 @@ return redirect()->route('admin.dashboard');
 
         // dd('hi');
 
+        $setting=Setting::find(1);
 
-
-        return view('auth.admin.login');
+        // return view('auth.admin.login');
+        return view('admin.auth.login', compact([ 'setting'  ]) );
     }
 
     /**
@@ -78,6 +83,8 @@ return redirect()->route('admin.dashboard');
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
+            'g-recaptcha-response' => 'required|captcha'
+
         ]);
         if (auth()->guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')]))
         {
@@ -87,7 +94,7 @@ return redirect()->route('admin.dashboard');
             return redirect()->route('admin.dashboard');
 
         } else {
-            return back()->with('error','your username and password are wrong.');
+            return back()->with('error','اطلاعات ورود متاسفانه اشتباه می باشد!');
         }
 
     }

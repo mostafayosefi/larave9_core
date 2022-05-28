@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('template/assets/css/demo_1/style.css') }}">
     <link rel="shortcut icon" href="{{ asset('template/assets/images/favicon.png') }}">
 
-    <link data-minify="1" rel='stylesheet'   href="{{ asset('telnum_files/mystyle.css') }}"  type='text/css' media='all' />
+    <link data-minify="1" rel='stylesheet'   href="{{ asset('template/assets/css/mystyle.css') }}"  type='text/css' media='all' />
 
 
 

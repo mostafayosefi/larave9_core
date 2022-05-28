@@ -6,12 +6,13 @@ use App\Models\Wallet;
 
 use App\Models\Setting;
 
+use App\Rules\Uniqemail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Morilog\Jalali\Jalalian;
+
+
 use App\Models\Loginhistorie;
-
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -138,6 +139,30 @@ if($file){
  }
     }
 
+}
+
+if(! function_exists('urllink') ) {
+    function urllink($urllink)
+    {
+
+$mystring = $urllink; $findme   = 'http'; $pos = strpos($mystring, $findme);
+  if ($pos !== false) {  $mystring = $urllink; }else{ $mystring = 'http://'.$urllink; }
+return  $mystring;
+
+  }
+}
+
+
+
+
+if(! function_exists('str_rep_price') ) {
+    function str_rep_price($price)
+    {
+
+     return  str_replace( ",","" , $price);
+
+
+    }
 }
 
 
@@ -275,6 +300,29 @@ if(! function_exists('linkdomain') ) {
 
 
 
+if(! function_exists('count_dashboard') ) {
+    function count_dashboard($dash_id,$mytable)
+    {
+
+
+
+if($mytable=='user'){ $query=User::query()->where([ ['id' , '<>' ,'1'], ]);}
+
+if($mytable=='ticket'){ $query=Ticket::query()->where([ ['id' , '<>' ,'0'], ]);}
+if($mytable=='new_ticket'){ $query=Ticket::query()->where([ ['id' , '<>' ,'0'], ['fromshow' , '=' ,'unread'], ]);}
+if($mytable=='new_ticket_admin'){ $query=Ticket::query()->where([ ['id' , '<>' ,'0'], ['toshow' , '=' ,'unread'], ]);}
+
+$count=$query->count();
+
+if($dash_id!='all'){$count=$query->where([  ['user_id' , '=' ,$dash_id],  ])->count();}
+
+return $count;
+
+    }
+}
+
+
+
 //get Status EmployerPackage
 if(! function_exists('getStatusEmployerPackage') ) {
 
@@ -400,6 +448,10 @@ $exit=number_format($price).' ريال ';    return  $exit;
 
 
 
+
+
+
+
     if(! function_exists('count_dashboard') ) {
         function count_dashboard($dash_id,$mytable)
         {
@@ -407,21 +459,8 @@ $exit=number_format($price).' ريال ';    return  $exit;
 
 
 if($mytable=='user'){ $query=User::query()->where([ ['id' , '<>' ,'1'], ]);}
-if($mytable=='company_request'){ $query=CompanyRequest::query()->where([ ['id' , '<>' ,'0'], ]);}
-if($mytable=='new_company_request'){ $query=CompanyRequest::query()->where([ ['id' , '<>' ,'0'], ['fromshow' , '=' ,'unread'], ]);}
-if($mytable=='new_company_request_admin'){ $query=CompanyRequest::query()->where([ ['id' , '<>' ,'0'], ['toshow' , '=' ,'unread'], ]);}
-if($mytable=='requestbrand'){ $query=Requestbrand::query()->where([ ['id' , '<>' ,'0'], ]);}
-if($mytable=='new_requestbrand'){ $query=Requestbrand::query()->where([ ['id' , '<>' ,'0'], ['fromshow' , '=' ,'unread'], ]);}
-if($mytable=='new_requestbrand_admin'){ $query=Requestbrand::query()->where([ ['id' , '<>' ,'0'], ['toshow' , '=' ,'unread'], ]);}
 
 
-
-
-if($mytable=='contact'){ $query=Contact::query()->where([ ['id' , '<>' ,'0'], ]);}
-if($mytable=='domain'){ $query=Domain::query()->where([ ['id' , '<>' ,'0'], ]);}
-if($mytable=='renew'){ $query=Renew::query()->where([ ['id' , '<>' ,'0'], ]);}
-if($mytable=='transfer'){ $query=Transfer::query()->where([ ['id' , '<>' ,'0'], ]);}
-if($mytable=='nameserver'){ $query=Nameserver::query()->where([ ['id' , '<>' ,'0'], ]);}
 if($mytable=='ticket'){ $query=Ticket::query()->where([ ['id' , '<>' ,'0'], ]);}
 if($mytable=='new_ticket'){ $query=Ticket::query()->where([ ['id' , '<>' ,'0'], ['fromshow' , '=' ,'unread'], ]);}
 if($mytable=='new_ticket_admin'){ $query=Ticket::query()->where([ ['id' , '<>' ,'0'], ['toshow' , '=' ,'unread'], ]);}

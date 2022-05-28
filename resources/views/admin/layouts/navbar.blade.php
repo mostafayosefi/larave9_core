@@ -250,12 +250,26 @@
                         <span>تغییر کاربر</span>
                       </a>
                     </li>
+
+
                     <li class="nav-item">
-                      <a href="javascript:;" class="nav-link">
-                        <i data-feather="log-out"></i>
-                        <span>خروج</span>
-                      </a>
-                    </li>
+                        <a href="{{ route('adminLogout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();" class="nav-link">
+                          <i data-feather="log-out"></i>
+                          <span>خروج</span>
+                        </a>
+                      </li>
+
+                      <form id="logout-form" action="{{ route('adminLogout') }}" method="POST"
+                          class="d-none">
+                          @csrf
+                      </form>
+
+
+
+
+
+
                   </ul>
                 </div>
               </div>
