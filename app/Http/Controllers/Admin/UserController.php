@@ -96,7 +96,7 @@ return view('admin.user.index' , compact(['users'  ]));
     public function edit(User $user)
     {
         $admin = $user;
-        
+
         $subreferal = User::where('referal' , $user->id )->get();
         $inviteds = User::find($admin->referal);
         $loginhistories=Loginhistorie::where('user_id',$user->id)->get();
@@ -128,7 +128,7 @@ return view('admin.user.index' , compact(['users'  ]));
             }),
         ]); */
 
-        return secret_user($request , $user , 'update' );
+        return secret_user($request , $user , 'update'  , 'users' );
 
 
     }
@@ -138,7 +138,7 @@ return view('admin.user.index' , compact(['users'  ]));
 
     public function secret(Request $request, User $user)
     {
-        return secret_user($request , $user , 'secret' );
+        return secret_user($request , $user , 'secret'  , 'users'  );
 
 
     }

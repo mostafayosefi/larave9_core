@@ -28,25 +28,25 @@
 
 
 
-{{--
-
-          <li class="nav-item  {{ isActive(['user.finical.wallet.create' , 'user.finical.wallet.index'])}}   ">
+        <li class="nav-item  {{ isActive(['user.wallet.create' , 'user.wallet.index'])}}   ">
             <a class="nav-link" data-toggle="collapse" href="#wallet" role="button" aria-expanded="false" aria-controls="wallet">
               <i class="link-icon" data-feather="list"></i>
               <span class="link-title">مدیریت کیف پول من   </span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse  {{ isShow(['user.finical.wallet.create' , 'user.finical.wallet.index'])}}     "  id="wallet">
+            <div class="collapse  {{ isShow(['user.wallet.create' , 'user.wallet.index'])}}     "  id="wallet">
               <ul class="nav sub-menu">
                 <li class="nav-item">
- <a href="{{ route('user.finical.wallet.create') }}" class="nav-link   {{ isActive(['user.finical.wallet.create']) }}  ">افزایش موجودی   </a>
+ <a href="{{ route('user.wallet.create') }}" class="nav-link   {{ isActive(['user.wallet.create']) }}  ">افزایش موجودی   </a>
                 </li>
                 <li class="nav-item">
- <a href="{{ route('user.finical.wallet.index') }}" class="nav-link   {{ isActive(['user.finical.wallet.index']) }}  ">      مشاهده تراکنش ها</a>
+ <a href="{{ route('user.wallet.index') }}" class="nav-link   {{ isActive(['user.wallet.index']) }}  ">      مشاهده تراکنش ها</a>
                 </li>
               </ul>
             </div>
-          </li> --}}
+          </li>
+
+
 
 
 

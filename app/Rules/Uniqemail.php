@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use App\Models\Admin;
 use App\Models\User;
 use App\Models\Contact;
 use App\Models\Nameserver;
@@ -35,7 +36,8 @@ class Uniqemail implements Rule
     {
 
         if($this->name_table=='users'){ $model=  User::query(); }
-        if($this->name_table=='pages'){ $model=  User::query(); } 
+        if($this->name_table=='admins'){ $model=  Admin::query(); }
+        if($this->name_table=='pages'){ $model=  User::query(); }
 
         $count =$model->where([
             [$attribute , '=' , $value],
