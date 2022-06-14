@@ -15,8 +15,7 @@ class CreateExamsTable extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('name');
+             $table->string('name');
             $table->string('text');
             $table->string('image')->nullable();
             $table->string('status')->default('active');

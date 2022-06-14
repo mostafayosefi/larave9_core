@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\Course\CourseFileController;
 use App\Http\Controllers\Admin\GetwaypaymentController;
 use App\Http\Controllers\Admin\Course\TeacherController;
 use App\Http\Controllers\Admin\Course\CourseTypeController;
+use App\Http\Controllers\Admin\Exam\ExamController;
 
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
@@ -237,15 +238,26 @@ Route::prefix('file')
 });
 
 
-
-
-
-
-
 });
 
 
 
+Route::prefix('exam')->name('exam.')->group(function () {
+
+    Route::prefix('exam')
+    ->name('exam.')->group(function () {
+
+
+        Route::get('/indexexam', [ExamController::class, 'index'])->name('index');
+        Route::get('/createexam', [ExamController::class, 'create'])->name('create');
+        Route::post('/', [ExamController::class, 'store'])->name('store');
+        Route::get('/{id}', [ExamController::class, 'show'])->name('show');
+        Route::get('/{id}/edit', [ExamController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [ExamController::class, 'update'])->name('update');
+        Route::delete('/{id}', [ExamController::class, 'destroy'])->name('destroy');
+ 
+    });
+    });
 
 
 

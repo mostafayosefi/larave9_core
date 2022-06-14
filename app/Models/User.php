@@ -62,11 +62,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(CourseRequest::class , 'user_id' );
     }
-
-    public function exams()
-    {
-        return $this->hasMany(Exam::class , 'user_id' );
-    }
+ 
 
     public function exam_onlines()
     {

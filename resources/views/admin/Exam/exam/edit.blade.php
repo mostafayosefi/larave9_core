@@ -1,12 +1,8 @@
   @component('admin.layouts.content', [
-      'title' => 'ویرایش جلسه',
-      'tabTitle' => ' ویرایش جلسه',
-      'breadcrumb' => [
-        ['title' => 'لیست دوره ها', 'url' => route('admin.course.course.index')],
-        ['title' => $course_file->course->name , 'url' => route('admin.course.course.show', $course_file->course )],
-        ['title' => $course_file->name , 'class' => 'active'],
-        ['title' => 'ویرایش جلسه  ', 'class' => 'active'],
-    ],
+      'title' => 'ویرایش آزمون',
+      'tabTitle' => ' ویرایش آزمون',
+      'breadcrumb' => [['title' => 'لیست آزمون ها ', 'url' => route('admin.exam.exam.index')], ['title' => 'ویرایش آزمون  ',
+      'class' => 'active']],
       ])
 
 
@@ -22,7 +18,7 @@
                           <div class="card-body">
 
                               <div class="card-header card-header-border-bottom">
-                                  <h4>ویرایش جلسه </h4>
+                                  <h4>ویرایش آزمون </h4>
                               </div>
 
                               <br>
@@ -31,7 +27,7 @@
                               @include('admin.layouts.errors')
 
 
-                              <form class="forms-sample" method="POST" action="{{ route('admin.course.file.update', $course_file) }}"
+                              <form class="forms-sample" method="POST" action="{{ route('admin.exam.exam.update', $exam) }}"
                                   enctype="multipart/form-data" onsubmit="return Validate(this);">
                                   @csrf
                                   <div class="row">
@@ -42,39 +38,23 @@
 
 
                                         <div class="form-group">
-                                            <label for="name">دوره  </label>
+                                            <label for="name">نام آزمون</label>
                                             <input type="text" class="form-control" id="name" autocomplete="off"
-                                                placeholder="   دوره  " name="course_name" value="{{$course_file->course->name}}" disabled >
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label for="name">نام جلسه</label>
-                                            <input type="text" class="form-control" id="name" autocomplete="off"
-                                                placeholder=" نام جلسه  " name="name" value="{{$course_file->name}}">
+                                                placeholder=" نام آزمون  " name="name" value="{{$exam->name}}">
                                         </div>
 
 
 
                                         <div class="form-group">
-                                            <label for="link">لینک جلسه</label>
-                                            <input type="text" class="form-control" id="link" autocomplete="off"
-                                                placeholder=" لینک جلسه  " name="link" value="{{$course_file->link}}">
-                                        </div>
-
-
-
-                                        <div class="form-group">
-                                            <label for="text"> معرفی کوتاه جلسه  </label>
+                                            <label for="text"> معرفی کوتاه از آزمون  </label>
                                             <textarea class="form-control"  autocomplete="off"
-                                                placeholder="معرفی کوتاه جلسه   " name="text"  rows="5"
-                                                 >{{$course_file->text}}</textarea>
+                                                placeholder="معرفی کوتاه از آزمون   " name="text"  rows="5"
+                                                 >{{$exam->text}}</textarea>
                                         </div>
 
 
 
-
-   @include('admin.layouts.table.avatarnul', [  'avatarimage' => $course_file->image , 'class'=>'profile-pic' , 'style' => 'height: 400px;width: 400px;'  ])
+   @include('admin.layouts.table.avatarnul', [  'avatarimage' => $exam->image , 'class'=>'profile-pic' , 'style' => 'height: 400px;width: 400px;'  ])
 
 
                                           <hr>
@@ -87,7 +67,7 @@
                                           @method('PUT')
 
                                           <div class="card-footer">
-                                              <a href="{{route('admin.course.course.show', $course_file->course )}}" class="btn btn-danger">بازگشت</a>
+                                              <a href="{{ route('admin.exam.exam.index') }}" class="btn btn-danger">بازگشت</a>
                                               <button type="submit" class="btn btn-primary float-right">ویرایش</button>
                                           </div>
 

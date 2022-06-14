@@ -34,26 +34,30 @@ class CourseFileController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'link' => 'required',
             'text' => 'required',
         ]);
         $data = $request->all();
         $data['image']  =  uploadFile($request->file('image'),'images/course_files','');
 
+
        CourseFile::create($data);
-       Alert::success('با موفقیت ثبت شد', 'اطلاعات جدید با موفقیت ثبت شد');
-        return redirect()->route('admin.Course.file.index');
+       Alert::success('با موفقیت ثبت شد', '  ثبت جلسه با موفقیت ثبت شد');
+       return back();
     }
 
     public function show($id)
     {
-        //
+
     }
 
 
 
     public function update(Request $request, $id , CourseFile $course_file){
+
         $request->validate([
             'name' => 'required',
+            'link' => 'required',
             'text' => 'required',
         ]);
         $course_file=CourseFile::find($id);

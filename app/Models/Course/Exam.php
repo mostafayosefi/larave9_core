@@ -8,14 +8,10 @@ class Exam extends Model
 {
 
     protected $fillable = [
-          'name', 'user_id'  ,  'text'  ,  'image'  ,
+          'name'   ,  'text'  ,  'image'  ,
     ];
 
-
-    public function user() {
-        return $this->belongsTo(User::class );
-    }
-
+ 
 
 
     public function exam_questions()

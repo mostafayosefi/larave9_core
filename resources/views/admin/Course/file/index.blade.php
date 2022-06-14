@@ -25,12 +25,12 @@
               <thead>
                 <tr>
                   <th>ردیف</th>
-                  <th> دوره</th> 
-                  <th>استاد مدرس</th> 
-                  <th>نوع دوره</th> 
+                  <th> دوره</th>
+                  <th>استاد مدرس</th>
+                  <th>نوع دوره</th>
                   <th>تاریخ ایجاد</th>
                   <th>  وضعیت</th>
-                  <th>مشاهده جزییات وجلسات</th> 
+                  <th>مشاهده جلسات</th>
                 </tr>
               </thead>
               <tbody>
@@ -56,12 +56,10 @@
 </td>
 
  <td>
-
-
 <a href="{{ route('admin.course.course.show', $admin) }}">
-<span class="btn btn-success" >  <i data-feather="eye"></i></span>
-</a> 
-</td> 
+<span class="btn btn-primary" >  <i data-feather="eye"></i></span>
+</a>
+</td>
 
                 </tr>
 @endforeach

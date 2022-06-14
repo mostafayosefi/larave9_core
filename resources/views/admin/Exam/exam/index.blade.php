@@ -1,8 +1,8 @@
 @component('admin.layouts.content',[
-    'title'=>'مشاهده دوره ها',
-    'tabTitle'=>'مشاهده دوره ها ',
+    'title'=>'مشاهده آزمون ها',
+    'tabTitle'=>'مشاهده آزمون ها ',
     'breadcrumb'=>[
-            ['title'=>'مشاهده دوره ها','class' => 'active']
+            ['title'=>'مشاهده آزمون ها','class' => 'active']
     ]])
 
 
@@ -17,61 +17,43 @@
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h6 class="card-title">لیست دوره ها</h6>
+          <h6 class="card-title">لیست آزمون ها</h6>
           <div class="table-responsive">
 
-@if($courses)
+@if($exams)
             <table id="dataTableExample" class="table">
               <thead>
                 <tr>
                   <th>ردیف</th>
-                  <th>نام دوره</th>
-                  <th>استاد مدرس</th>
-                  <th>نوع دوره</th>
+                  <th>نام آزمون</th>
                   <th>تاریخ ایجاد</th>
-                  <th>  وضعیت</th>
                   <th>ویرایش</th>
-                  <th>مشاهده جلسات</th>
                   <th>حذف</th>
                 </tr>
               </thead>
               <tbody>
 
 
-@foreach($courses as $key => $admin)
+@foreach($exams as $key => $admin)
                 <tr>
                     <td>{{ $key + 1 }}</td>
-<td>{{$admin->name}}</td>
-<td>{{$admin->teacher->name}}
+<td>{{$admin->name}}
 
-    @include('admin.layouts.table.avatar', [ 'avatarimage' => $admin->teacher->image , 'class'=>'img-xs rounded-circle' , 'style' => ''  ])
-</td>
-
-<td>{{$admin->course_type->name}}</td>
+ </td>
 <td>{{ date_frmat($admin->created_at) }}</td>
 
 
-<td>
-
-    @include('admin.layouts.table.statusacount', [$admin ,'route' =>
-    route('admin.course.course.status', $admin->id ) , 'myname' => ' دوره '.$admin->name.' ' ])
-</td>
-
  <td>
-<a href="{{ route('admin.course.course.edit', $admin) }}">
+
+
+<a href="{{ route('admin.exam.exam.edit', $admin) }}">
 <span class="btn btn-primary" >  <i data-feather="edit"></i></span>
 </a>
+
+
 </td>
-
-
 <td>
-    <a href="{{ route('admin.course.course.show', $admin) }}">
-    <span class="btn btn-primary" >  <i data-feather="eye"></i></span>
-    </a>
-    </td>
-
-<td>
-@include('admin.layouts.table.modal', [$admin ,'route' => route('admin.course.course.destroy', $admin) , 'myname' => $admin->name ])
+@include('admin.layouts.table.modal', [$admin ,'route' => route('admin.exam.exam.destroy', $admin) , 'myname' => $admin->name ])
 </td>
 
                 </tr>

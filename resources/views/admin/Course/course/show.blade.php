@@ -9,16 +9,13 @@
 
 
       <div class="row">
-          <div class="col-12 col-xl-12 stretch-card">
-              <div class="row flex-grow">
 
-
-                  <div class="col-md-12 grid-margin stretch-card">
+                  <div class="col-lg-12 col-md-12 col-md-12 grid-margin stretch-card">
                       <div class="card">
                           <div class="card-body">
 
                               <div class="card-header card-header-border-bottom">
-                                  <h4>مدیریت جلسات دوره </h4>
+                                  <h4>جزییات دوره </h4>
                               </div>
 
                               <br>
@@ -27,35 +24,32 @@
                               @include('admin.layouts.errors')
 
 
-                              <form class="forms-sample" method="POST" action="{{ route('admin.course.course.update', $course) }}"
-                                  enctype="multipart/form-data" onsubmit="return Validate(this);">
-                                  @csrf
                                   <div class="row">
 
-                                      <div class="col-sm-12">
+                                    <div class="col-lg-6 col-md-6 col-md-6 ">
 
-
- 
- 
                                         <div class="form-group">
                                             <label for="name">نام دوره</label>
                                             <input type="text" class="form-control" id="name" autocomplete="off"
                                                  name="name" value="{{$course->name}}"  disabled >
                                         </div>
- 
+
                                         <div class="form-group">
                                             <label for="name">نوع دوره</label>
                                             <input type="text" class="form-control" id="name" autocomplete="off"
                                                  name="name" value="{{$course->course_type->name}}"  disabled >
                                         </div>
- 
+
                                         <div class="form-group">
                                             <label for="name">استاد مدرس دوره</label>
                                             <input type="text" class="form-control" id="name" autocomplete="off"
                                                  name="name" value="{{$course->teacher->name}}"  disabled >
-                                        </div> 
+                                        </div>
+
+                                    </div>
 
 
+                                    <div class="col-lg-6 col-md-6 col-md-6">
                                         <div class="form-group">
                                             <label for="short"> معرفی کوتاه دوره  </label>
                                             <textarea class="form-control"  autocomplete="off"
@@ -68,27 +62,28 @@
                                             echo $course->text;
                                          @endphp
 
- 
+
 
 
    @include('admin.layouts.table.avatarnul', [  'avatarimage' => $course->image , 'class'=>'profile-pic' , 'style' => 'height: 400px;width: 400px;'  ])
 
- 
 
-                                          @method('PUT')
 
                                           <div class="card-footer">
-                                              <a href="{{ route('admin.course.course.index') }}" class="btn btn-danger">بازگشت</a>
-                                              <button type="submit" class="btn btn-primary float-right">مدیریت جلسات</button>
+                                              <a href="{{ route('admin.course.course.index') }}" class="btn btn-danger">  مشاهده دوره ها</a>
                                           </div>
 
+ 
 
-                                      </div>
+                                    </div>
+
+
+
+
 
 
                                   </div>
 
-                              </form>
 
 
 
@@ -97,11 +92,31 @@
                   </div>
 
 
+                  <div class="col-lg-12 col-md-12 col-md-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+
+                            @include('admin.Course.file.table_index', [ 'course' => $course   ])
+
+                            @include('admin.Course.file.modal_create', [ 'course' => $course  , 'route' => route('admin.course.file.store') ])
+
+
+                        </div>
+                        </div>
+                        </div>
+
+
 
 
               </div>
-          </div>
-      </div>
+
+
+
+
+
+
+
+
 
 
 
