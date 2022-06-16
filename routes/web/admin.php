@@ -29,6 +29,7 @@ Route::get('/index', [AdminController::class, 'demoindex'])->name('index');
 
 
             //profile
+            //profile
             Route::prefix('profile')->name('profile.')->group(function () {
                 Route::get('/', [ProfileController::class, 'index'])->name('index');
                 Route::get('/show', [ProfileController::class, 'show'])->name('show');
@@ -255,7 +256,7 @@ Route::prefix('exam')->name('exam.')->group(function () {
         Route::get('/{id}/edit', [ExamController::class, 'edit'])->name('edit');
         Route::put('/{id}', [ExamController::class, 'update'])->name('update');
         Route::delete('/{id}', [ExamController::class, 'destroy'])->name('destroy');
- 
+
     });
     });
 
