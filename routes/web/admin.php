@@ -15,7 +15,12 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TextdesController;
 use App\Http\Controllers\Admin\SpotliteController;
+use App\Http\Controllers\Admin\Course\CourseController;
+use App\Http\Controllers\Admin\Course\CourseFileController;
 use App\Http\Controllers\Admin\GetwaypaymentController;
+use App\Http\Controllers\Admin\Course\TeacherController;
+use App\Http\Controllers\Admin\Course\CourseTypeController;
+use App\Http\Controllers\Admin\Exam\ExamController;
 
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
@@ -24,6 +29,10 @@ Route::get('/index', [AdminController::class, 'demoindex'])->name('index');
 
 
             //profile
+<<<<<<< HEAD
+=======
+            //profile
+>>>>>>> refs/remotes/origin/master
             Route::prefix('profile')->name('profile.')->group(function () {
                 Route::get('/', [ProfileController::class, 'index'])->name('index');
                 Route::get('/show', [ProfileController::class, 'show'])->name('show');
@@ -170,6 +179,91 @@ Route::prefix('ticket')
     Route::delete('/{ticket}', [TicketController::class, 'destroy'])->name('destroy');
     Route::get('/close/{ticket}', [TicketController::class, 'status'])->name('close');
 });
+
+
+
+
+// START ROUTE PROJECT
+
+
+Route::prefix('course')->name('course.')->group(function () {
+
+Route::prefix('type')
+->name('type.')->group(function () {
+    Route::get('/indextype', [CourseTypeController::class, 'index'])->name('index');
+    Route::get('/createtype', [CourseTypeController::class, 'create'])->name('create');
+    Route::post('/', [CourseTypeController::class, 'store'])->name('store');
+    Route::get('/{id}', [CourseTypeController::class, 'show'])->name('show');
+    Route::get('/{id}/edit', [CourseTypeController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [CourseTypeController::class, 'update'])->name('update');
+    Route::delete('/{id}', [CourseTypeController::class, 'destroy'])->name('destroy');
+});
+
+Route::prefix('teacher')
+->name('teacher.')->group(function () {
+    Route::get('/indexteacher', [TeacherController::class, 'index'])->name('index');
+    Route::get('/createteacher', [TeacherController::class, 'create'])->name('create');
+    Route::post('/', [TeacherController::class, 'store'])->name('store');
+    Route::get('/{id}', [TeacherController::class, 'show'])->name('show');
+    Route::get('/{id}/edit', [TeacherController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [TeacherController::class, 'update'])->name('update');
+    Route::delete('/{id}', [TeacherController::class, 'destroy'])->name('destroy');
+    Route::put('/{id}/status', [TeacherController::class, 'status'])->name('status');
+
+});
+
+
+
+Route::prefix('course')
+->name('course.')->group(function () {
+    Route::get('/indexcourse', [CourseController::class, 'index'])->name('index');
+    Route::get('/createcourse', [CourseController::class, 'create'])->name('create');
+    Route::post('/', [CourseController::class, 'store'])->name('store');
+    Route::get('/{id}/showcourse', [CourseController::class, 'show'])->name('show');
+    Route::get('/{id}/edit', [CourseController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [CourseController::class, 'update'])->name('update');
+    Route::delete('/{id}', [CourseController::class, 'destroy'])->name('destroy');
+    Route::put('/{id}/status', [CourseController::class, 'status'])->name('status');
+
+});
+
+
+Route::prefix('file')
+->name('file.')->group(function () {
+    Route::get('/indexfile', [CourseFileController::class, 'index'])->name('index');
+    Route::get('/createfile', [CourseFileController::class, 'create'])->name('create');
+    Route::post('/', [CourseFileController::class, 'store'])->name('store');
+    Route::get('/{id}', [CourseFileController::class, 'show'])->name('show');
+    Route::get('/{id}/edit', [CourseFileController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [CourseFileController::class, 'update'])->name('update');
+    Route::delete('/{id}', [CourseFileController::class, 'destroy'])->name('destroy');
+    Route::put('/{id}/status', [CourseFileController::class, 'status'])->name('status');
+
+});
+
+
+});
+
+
+
+Route::prefix('exam')->name('exam.')->group(function () {
+
+    Route::prefix('exam')
+    ->name('exam.')->group(function () {
+
+
+        Route::get('/indexexam', [ExamController::class, 'index'])->name('index');
+        Route::get('/createexam', [ExamController::class, 'create'])->name('create');
+        Route::post('/', [ExamController::class, 'store'])->name('store');
+        Route::get('/{id}', [ExamController::class, 'show'])->name('show');
+        Route::get('/{id}/edit', [ExamController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [ExamController::class, 'update'])->name('update');
+        Route::delete('/{id}', [ExamController::class, 'destroy'])->name('destroy');
+
+    });
+    });
+
+
 
 
 

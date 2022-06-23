@@ -150,6 +150,14 @@
           </li>
 
 
+@include('admin.Course.layouts.sidebar' )
+@include('admin.Exam.layouts.sidebar' )
+
+
+
+
+          <li class="nav-item nav-category">مدیریت مالی  </li>
+
           <li class="nav-item  {{ isActive(['admin.wallet.index' , 'admin.wallet.create'])}}  ">
             <a class="nav-link" data-toggle="collapse" href="#wallet" role="button" aria-expanded="false" aria-controls="wallet">
               <i class="link-icon" data-feather="list"></i>

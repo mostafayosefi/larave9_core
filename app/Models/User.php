@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Ticket;
+use Laravel\Sanctum\HasApiTokens;
+use App\Models\Course\CourseRequest;
+use App\Models\Course\Exam;
+use App\Models\Course\ExamOnline;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 
 class User extends Authenticatable
@@ -51,6 +55,18 @@ class User extends Authenticatable
     public function tickets()
     {
         return $this->hasMany(Ticket::class , 'user_id' );
+    }
+
+
+    public function course_requests()
+    {
+        return $this->hasMany(CourseRequest::class , 'user_id' );
+    }
+ 
+
+    public function exam_onlines()
+    {
+        return $this->hasMany(ExamOnline::class , 'user_id' );
     }
 
 

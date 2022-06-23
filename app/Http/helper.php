@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Course\Course;
 use App\Models\User;
 use App\Models\Ticket;
 use App\Models\Wallet;
@@ -13,6 +14,7 @@ use Morilog\Jalali\Jalalian;
 
 
 use App\Models\Loginhistorie;
+use App\Models\Course\Teacher;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -197,6 +199,17 @@ if(! function_exists('Change_status') ) {
         if($table=='users'){
             $table= User::find($id);
             Alert::success('تغییر وضعیت اکانت با موفقیت انجام شد', 'تغییرات وضعیت اکانت با موفقیت انجام شد');
+        }
+
+        if($table=='teachers'){
+            $table= Teacher::find($id);
+            Alert::success('تغییر وضعیت اکانت استاد با موفقیت انجام شد', 'تغییرات وضعیت اکانت استاد با موفقیت انجام شد');
+        }
+
+
+        if($table=='courses'){
+            $table= Course::find($id);
+            Alert::success('تغییر وضعیت دوره با موفقیت انجام شد', 'تغییرات وضعیت دوره با موفقیت انجام شد');
         }
 
 
