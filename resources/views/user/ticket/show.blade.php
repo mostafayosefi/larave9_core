@@ -31,6 +31,7 @@
     <div class="aside-body">
     <ul class="list-group">
 
+        <li class="list-group-item"> <i data-feather="mail"></i> موضوع تیکت    :  {{$ticket->title}} </li>
 
      <li class="list-group-item"> <i data-feather="calendar"></i>   تاریخ ایجاد تیکت :    {{ date_frmat($ticket->created_at) }}</li>
 

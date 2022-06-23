@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\TicketController;
+use App\Http\Controllers\User\WalletController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\User\DashboardController;
@@ -71,9 +72,16 @@ Route::namespace('Auth')->prefix('admin')->group(function () {
 
 
 
-
         });
 
+
+        Route::prefix('wallet')->name('wallet.')->group(function () {
+            Route::get('/indexwallet', [WalletController::class, 'index'])->name('index');
+            Route::get('/createwallet', [WalletController::class, 'create'])->name('create');
+            Route::post('/', [WalletController::class, 'store'])->name('store');
+
+
+          });
 
         });
 

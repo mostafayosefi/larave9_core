@@ -1,9 +1,11 @@
   @component('admin.layouts.content', [
-      'title' => 'پروفایل کاربر ',
-      'tabTitle' => ' پروفایل کاربر',
-      'breadcrumb' => [['title' => 'مشاهده کاربران', 'url' => route('admin.user.index')], ['title' => 'پروفایل کاربر ',
+      'title' => 'ویرایش پروفایل',
+      'tabTitle' => ' ویرایش پروفایل',
+      'breadcrumb' => [['title' => 'مشاهده پروفایل مدیریت', 'url' => route('admin.profile.edit')], ['title' => 'ویرایش پروفایل  ',
       'class' => 'active']],
       ])
+
+
 
 
 
@@ -29,7 +31,7 @@
 
               <div class="card card-default">
                   <div class="card-header card-header-border-bottom">
-                      <h4>پروفایل کاربر </h4>
+                      <h4>پروفایل مدیریت </h4>
                   </div>
                   <div class="card-body">
                       <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -42,17 +44,6 @@
                                   رمزعبور</a>
                           </li>
 
-                          <li class="nav-item">
-                            <a class="nav-link @if (Session::get('err') == '8')  active @endif " id="icon-allusers-tab" data-toggle="tab" href="#icon-allusers" role="tab" aria-controls="icon-allusers" aria-selected="@if (Session::get('err') == '1')   true @else false  @endif"> <i data-feather="users"></i>کاربران
-                                زیرمجموعه</a>
-                        </li>
-
-
-
-                        <li class="nav-item">
-                            <a class="nav-link @if (Session::get('err') == '9')  active @endif " id="icon-histore-tab" data-toggle="tab" href="#icon-histore" role="tab" aria-controls="icon-histore" aria-selected="@if (Session::get('err') == '1')   true @else false  @endif"> <i data-feather="clock"></i>
-                                 تاریخچه ورود</a>
-                        </li>
 
                       </ul>
 
@@ -62,7 +53,7 @@
                           <div class="tab-pane pt-3 fade   @if (empty(Session::get('err'))) show active @endif" id="icon-home" role="tabpanel"
                               aria-labelledby="icon-home-tab">
 
-                              @include('user.profile.profile', [ 'guard' => 'admin'  ,  $admin  , 'route' => route('admin.user.update', $admin) ])
+                              @include('user.profile.profile', [ 'guard' => 'admin'  ,  $admin  , 'route' => route('admin.profile.update', $admin)  ])
 
 
                           </div>
@@ -70,27 +61,10 @@
                           <div class="tab-pane pt-3 fade  @if (Session::get('err') == '1') show active @endif" id="icon-secret" role="tabpanel"
                               aria-labelledby="icon-secret-tab">
 
-                              @include('user.profile.secret', [ 'guard' => 'admin'  ,  $admin  , 'route' => route('admin.user.secret', $admin) ])
+                              @include('user.profile.secret', [ 'guard' => 'admin'  ,  $admin  , 'route' => route('admin.profile.secret', $admin) ])
 
                           </div>
 
-
-                          <div class="tab-pane pt-3 fade  @if (Session::get('err') == '10') show active @endif" id="icon-contact" role="tabpanel"
-                          aria-labelledby="icon-contact-tab">
-
-                          @include('user.profile.referal', [ 'guard' => 'admin'  ,  $admin ])
-
-                      </div>
-
-
-
-
-                      <div class="tab-pane pt-3 fade  @if (Session::get('err') == '9') show active @endif" id="icon-histore" role="tabpanel"
-                      aria-labelledby="icon-histore-tab">
-
-                      @include('user.profile.loginhistory', [ 'guard' => 'admin'  ,  $admin ])
-
-                  </div>
 
 
 

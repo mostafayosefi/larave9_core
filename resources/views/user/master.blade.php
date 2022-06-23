@@ -45,8 +45,8 @@
     <div class="page-wrapper">
 
         <!-- partial:partials/_navbar.html -->
-@include('user.layouts.navbar')
-      <!-- partial -->
+        @include('admin.layouts.navbar' , [ 'guard' => 'user'  ] )
+        <!-- partial -->
 
 
     <div class="page-content">

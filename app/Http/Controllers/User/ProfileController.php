@@ -31,7 +31,7 @@ class ProfileController extends Controller
     public function update(Request $request ){
 
         $user = Auth::guard('user')->user();
-        return secret_user($request , $user , 'update' );
+        return secret_user($request , $user , 'update'  , 'users'  );
 
 
     }
@@ -43,7 +43,7 @@ class ProfileController extends Controller
     public function secret_update(Request $request ){
 
         $user = Auth::guard('user')->user();
-        return secret_user($request , $user , 'secret' );
+        return secret_user($request , $user , 'secret'   , 'users' );
 
     }
 

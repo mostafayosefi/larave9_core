@@ -67,11 +67,11 @@
 
             <tr>
                 <td>    نوع تراکنش </td>
-                <td>        @include('index.layouts.table.getstatus', ['admin' => $wallet ,'route' => ''  ,'type_name' => 'flag_wallet'   ])  </td>
+                <td>        @include('admin.layouts.table.origin_getstatus', ['admin' => $wallet ,'route' => ''  ,'type_name' => 'flag_wallet'   ])  </td>
             </tr>
             <tr>
                 <td>    وضعیت تراکنش </td>
-                <td>        @include('index.layouts.table.getstatus', ['admin' => $wallet ,'route' => ''  ,'type_name' => 'status_wallet'   ])  </td>
+                <td>        @include('admin.layouts.table.origin_getstatus', ['admin' => $wallet ,'route' => ''  ,'type_name' => 'status_wallet'   ])  </td>
             </tr>
 
 @if($wallet->status!='waiting')

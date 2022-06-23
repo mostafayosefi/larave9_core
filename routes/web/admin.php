@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ComidController;
 use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\Admin\WalletController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TextdesController;
 use App\Http\Controllers\Admin\SpotliteController;
@@ -20,6 +21,18 @@ Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard
 
 Route::get('/demo', [AdminController::class, 'admindemo'])->name('demo');
 Route::get('/index', [AdminController::class, 'demoindex'])->name('index');
+
+
+            //profile
+            Route::prefix('profile')->name('profile.')->group(function () {
+                Route::get('/', [ProfileController::class, 'index'])->name('index');
+                Route::get('/show', [ProfileController::class, 'show'])->name('show');
+                Route::get('/edit', [ProfileController::class, 'edit'])->name('edit');
+                Route::put('/update', [ProfileController::class, 'update'])->name('update');
+                Route::get('/secret', [ProfileController::class, 'secret'])->name('secret');
+                Route::put('/secret', [ProfileController::class, 'secret_update'])->name('secret.update');
+            });
+
 
 
 
