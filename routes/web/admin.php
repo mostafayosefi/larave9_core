@@ -9,18 +9,20 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ComidController;
+use App\Http\Controllers\Admin\FetchController;
 use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\Admin\WalletController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TextdesController;
 use App\Http\Controllers\Admin\SpotliteController;
+use App\Http\Controllers\Admin\Exam\ExamController;
 use App\Http\Controllers\Admin\Course\CourseController;
-use App\Http\Controllers\Admin\Course\CourseFileController;
 use App\Http\Controllers\Admin\GetwaypaymentController;
 use App\Http\Controllers\Admin\Course\TeacherController;
+use App\Http\Controllers\Admin\Course\CourseFileController;
 use App\Http\Controllers\Admin\Course\CourseTypeController;
-use App\Http\Controllers\Admin\Exam\ExamController;
+use App\Http\Controllers\Admin\Course\CourseRequestController;
 
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
@@ -29,11 +31,8 @@ Route::get('/index', [AdminController::class, 'demoindex'])->name('index');
 
 
             //profile
-<<<<<<< HEAD
-=======
-            //profile
->>>>>>> refs/remotes/origin/master
-            Route::prefix('profile')->name('profile.')->group(function () {
+
+Route::prefix('profile')->name('profile.')->group(function () {
                 Route::get('/', [ProfileController::class, 'index'])->name('index');
                 Route::get('/show', [ProfileController::class, 'show'])->name('show');
                 Route::get('/edit', [ProfileController::class, 'edit'])->name('edit');
@@ -241,6 +240,19 @@ Route::prefix('file')
 
 });
 
+Route::prefix('request')
+->name('request.')->group(function () {
+    Route::get('/indexrequest_course', [CourseRequestController::class, 'index'])->name('index');
+    Route::get('/createrequest_course', [CourseRequestController::class, 'create'])->name('create');
+    Route::post('/', [CourseRequestController::class, 'store'])->name('store');
+    Route::get('/{id}', [CourseRequestController::class, 'show'])->name('show');
+    Route::get('/{id}/editrequest_course', [CourseRequestController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [CourseRequestController::class, 'update'])->name('update');
+    Route::delete('/{id}', [CourseRequestController::class, 'destroy'])->name('destroy');
+    Route::put('/{id}/status', [CourseRequestController::class, 'status'])->name('status');
+
+});
+
 
 });
 
@@ -262,6 +274,14 @@ Route::prefix('exam')->name('exam.')->group(function () {
 
     });
     });
+
+    Route::prefix('fetch')
+    ->name('fetch.')->group(function () {
+
+        Route::get('/price/{value}', [FetchController::class, 'price'])->name('price');
+
+    });
+
 
 
 

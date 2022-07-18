@@ -12,7 +12,7 @@ class TeacherController extends Controller
 
 
     public function index(){
-        $teachers= Teacher::all();
+        $teachers= Teacher::orderby('id','desc')->get();
         return view('admin.Course.teacher.index' , compact(['teachers'  ]));
     }
 
@@ -44,7 +44,7 @@ class TeacherController extends Controller
 
        Teacher::create($data);
        Alert::success('با موفقیت ثبت شد', 'اطلاعات جدید با موفقیت ثبت شد');
-        return redirect()->route('admin.Course.teacher.index');
+        return redirect()->route('admin.course.teacher.index');
     }
 
     public function show($id)

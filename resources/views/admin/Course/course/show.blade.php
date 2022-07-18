@@ -10,6 +10,23 @@
 
       <div class="row">
 
+
+
+        <div class="col-lg-12 col-md-12 col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+
+                    @include('admin.Course.file.table_index', [ 'course' => $course   ])
+
+                    @include('admin.Course.file.modal_create', [ 'course' => $course  , 'route' => route('admin.course.file.store') ])
+
+
+                </div>
+                </div>
+                </div>
+
+
+
                   <div class="col-lg-12 col-md-12 col-md-12 grid-margin stretch-card">
                       <div class="card">
                           <div class="card-body">
@@ -73,7 +90,7 @@
                                               <a href="{{ route('admin.course.course.index') }}" class="btn btn-danger">  مشاهده دوره ها</a>
                                           </div>
 
- 
+
 
                                     </div>
 
@@ -90,21 +107,6 @@
                           </div>
                       </div>
                   </div>
-
-
-                  <div class="col-lg-12 col-md-12 col-md-12 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
-
-                            @include('admin.Course.file.table_index', [ 'course' => $course   ])
-
-                            @include('admin.Course.file.modal_create', [ 'course' => $course  , 'route' => route('admin.course.file.store') ])
-
-
-                        </div>
-                        </div>
-                        </div>
-
 
 
 

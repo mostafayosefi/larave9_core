@@ -32,6 +32,11 @@ class Course extends Model
 
 
 
+    public function price_type()
+    {
+        return $this->hasOne(ExamResponse::class , 'price_type_id' );
+    }
+
 
 
 }

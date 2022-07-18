@@ -36,7 +36,7 @@ class CourseTypeController extends Controller
 
        CourseType::create($data);
        Alert::success('با موفقیت ثبت شد', 'اطلاعات جدید با موفقیت ثبت شد');
-        return redirect()->route('admin.Course.type.index');
+        return redirect()->route('admin.course.type.index');
     }
 
     public function show($id)

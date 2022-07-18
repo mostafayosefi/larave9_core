@@ -10,7 +10,7 @@ class CourseRequest extends Model
 {
 
     protected $fillable = [
-        'status'   , 'user_id', 'course_id',
+        'status'   , 'user_id', 'course_id', 'text',
     ];
 
 
@@ -23,7 +23,7 @@ class CourseRequest extends Model
         return $this->belongsTo(User::class );
     }
 
-    
+
 
 
 

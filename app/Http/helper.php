@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Course\Course;
+use App\Models\Course\CourseRequest;
 use App\Models\User;
 use App\Models\Ticket;
 use App\Models\Wallet;
@@ -210,6 +211,11 @@ if(! function_exists('Change_status') ) {
         if($table=='courses'){
             $table= Course::find($id);
             Alert::success('تغییر وضعیت دوره با موفقیت انجام شد', 'تغییرات وضعیت دوره با موفقیت انجام شد');
+        }
+
+        if($table=='course_requests'){
+            $table= CourseRequest::find($id);
+            Alert::success('تغییر وضعیت درخواست دوره با موفقیت انجام شد', 'تغییرات وضعیت درخواست دوره با موفقیت انجام شد');
         }
 
 
@@ -534,3 +540,7 @@ if($myfunc=='text'){ return $messagetext; }
     }
 
 
+
+
+    // NOCAPTCHA_SECRET=6LeVS2keAAAAAA-sZPPRkg6fw3jqtx7opZNHuKXo
+    // NOCAPTCHA_SITEKEY=6LeVS2keAAAAAO0uPFXqTptgh7bkqjQCzT1haE_7

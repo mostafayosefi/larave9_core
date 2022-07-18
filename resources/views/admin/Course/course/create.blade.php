@@ -5,6 +5,25 @@
       'class' => 'active']],
       ])
 
+@slot('style')
+    <link rel="stylesheet" href="{{ asset('template/assets/vendors/select2/select2.min.css') }}">
+    <script>
+        function fetch_price(val) {
+            var val = document.getElementById("price").value;
+            $.ajax({
+                type: 'get',
+                url: '../../fetch/price/' + val + '',
+                data: {
+                    get_option: val
+                },
+                success: function(response) {
+                    document.getElementById("view_price").innerHTML = response;
+                }
+            });
+        }
+    </script>
+@endslot
+
 
       <div class="row">
           <div class="col-12 col-xl-12 stretch-card">
@@ -35,6 +54,21 @@
                                       <div class="col-sm-12">
 
 
+
+                                        <select name="type" id="price" onchange="fetch_price(this.value);"
+                                        class="elementor-field elementor-size-sm  elementor-field-textual"
+                                        placeholder=""   aria-required="true" >
+                                        <option value="online" {{(old('type')  == 'online' ? 'selected' : '')}}   >پرداخت آنلاین   </option>
+                                        <option value="offline"  {{(old('type')  == 'offline' ? 'selected' : '')}}  >پرداخت آفلاین</option>
+                                        <option value="depo"  {{(old('type')  == 'depo' ? 'selected' : '')}}  >پرداخت از شارژ حساب</option>
+                                    </select>
+                                    <input type="hidden" name="textUser" value="پرداخت غیرمستقیم" />
+        <div  id="view_price">
+
+        </div>
+
+
+
                                           <div class="form-group">
                                               <label for="name">نام دوره</label>
                                               <input type="text" class="form-control" id="name" autocomplete="off"
@@ -62,7 +96,7 @@
                                                    >{{ old('text') }}</textarea>
                                           </div>
 
-
+ 
 
 <hr>
 <div class="form-group" >

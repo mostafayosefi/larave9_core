@@ -77,3 +77,23 @@
             </div>
           </li>
 
+
+          <li class="nav-item  {{ isActive(['admin.course.request.create' , 'admin.course.request.edit' , 'admin.course.request.show', 'admin.course.request.index'])}}  ">
+            <a class="nav-link" data-toggle="collapse" href="#course_request" role="button" aria-expanded="false" aria-controls="course_request">
+              <i class="link-icon" data-feather="list"></i>
+              <span class="link-title">  مدیریت درخواست دوره   </span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse  {{ isShow(['admin.course.request.create' , 'admin.course.request.edit', 'admin.course.course.show', 'admin.course.request.index'])}}   "  id="course_request">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+ <a href="{{ route('admin.course.request.create') }}" class="nav-link   {{ isActive(['admin.course.request.create']) }}  ">ثبت درخواست دوره </a>
+                </li>
+                <li class="nav-item">
+ <a href="{{ route('admin.course.request.index') }}" class="nav-link   {{ isActive(['admin.course.request.edit', 'admin.course.course.show' , 'admin.course.request.index']) }}  ">مشاهد درخواستهای دوره  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+
