@@ -12,10 +12,14 @@ class PriceType extends Model
         'name'  ,
    ];
 
+ 
 
-   public function course() {
-    return $this->belongsTo(ExamOnline::class );
-}
+
+public function course()
+{
+    return $this->hasOne(Course::class , 'price_type_id' );
+} 
+
 
 
 

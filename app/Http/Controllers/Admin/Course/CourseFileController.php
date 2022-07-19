@@ -19,7 +19,7 @@ class CourseFileController extends Controller
     }
 
 
-    public function create(){
+    public function create(){ 
         $courses=Course::where([  ['status' , 'active'], ])->get();
         return view('admin.Course.file.create' , compact(['courses'  ]) );
     }

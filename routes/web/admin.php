@@ -278,7 +278,7 @@ Route::prefix('exam')->name('exam.')->group(function () {
     Route::prefix('fetch')
     ->name('fetch.')->group(function () {
 
-        Route::get('/price/{value}', [FetchController::class, 'price'])->name('price');
+        Route::get('/price/{model}/{value}/{course_id}', [FetchController::class, 'price'])->name('price');
 
     });
 

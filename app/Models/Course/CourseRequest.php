@@ -24,6 +24,10 @@ class CourseRequest extends Model
     }
 
 
+    public function payment_type() {
+        return $this->belongsTo(PaymentType::class );
+    }
+
 
 
 

@@ -6,6 +6,25 @@
       ])
 
 
+@slot('style')
+    <link rel="stylesheet" href="{{ asset('template/assets/vendors/select2/select2.min.css') }}">
+    <script>
+        function fetch_price(val) {
+            var course_id = <?php echo $course->id; ?> ;
+            var val = document.getElementById("price_type_id").value;
+            $.ajax({
+                type: 'get',
+                url: '../../../fetch/price/course/' + val + '/' + course_id + '',
+                data: {
+                    get_option: val
+                },
+                success: function(response) {
+                    document.getElementById("view_price").innerHTML = response;
+                }
+            });
+        }
+    </script>
+@endslot
 
 
       <div class="row">
@@ -66,6 +85,14 @@
 
 
 
+                                        @include('admin.layouts.table.java_price')
+                                          
+
+                                        @include('admin.layouts.table.selectbox', [ 'allforeachs' => $price_types ,  'input_name' => 'name'  ,  'name_select' => 'هزینه دوره' ,  'value' =>   $course->price_type->id , 'required'=>'required'  , 'index_id'=>'price_type_id' ])
+                                       <div  id="view_price">
+                                        @include('admin.fetch.price', [ 'value' => $course->price_type->id , 'mymodel' => 'course' ])
+
+                                       </div>
 
    @include('admin.layouts.table.avatarnul', [  'avatarimage' => $course->image , 'class'=>'profile-pic' , 'style' => 'height: 400px;width: 400px;'  ])
 

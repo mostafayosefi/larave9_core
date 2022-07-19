@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="{{ asset('template/assets/vendors/select2/select2.min.css') }}">
     <script>
         function fetch_price(val) {
-            var val = document.getElementById("price").value;
+            var val = document.getElementById("price_type_id").value;
             $.ajax({
                 type: 'get',
-                url: '../../fetch/price/' + val + '',
+                url: '../../fetch/price/course' + val + '/0',
                 data: {
                     get_option: val
                 },
@@ -54,20 +54,7 @@
                                       <div class="col-sm-12">
 
 
-
-                                        <select name="type" id="price" onchange="fetch_price(this.value);"
-                                        class="elementor-field elementor-size-sm  elementor-field-textual"
-                                        placeholder=""   aria-required="true" >
-                                        <option value="online" {{(old('type')  == 'online' ? 'selected' : '')}}   >پرداخت آنلاین   </option>
-                                        <option value="offline"  {{(old('type')  == 'offline' ? 'selected' : '')}}  >پرداخت آفلاین</option>
-                                        <option value="depo"  {{(old('type')  == 'depo' ? 'selected' : '')}}  >پرداخت از شارژ حساب</option>
-                                    </select>
-                                    <input type="hidden" name="textUser" value="پرداخت غیرمستقیم" />
-        <div  id="view_price">
-
-        </div>
-
-
+ 
 
                                           <div class="form-group">
                                               <label for="name">نام دوره</label>
@@ -89,6 +76,7 @@
                                           </div>
 
 
+
                                           <div class="form-group">
                                               <label for="text"> درباره دوره</label>
                                               <textarea class="form-control"  autocomplete="off"
@@ -97,6 +85,13 @@
                                           </div>
 
  
+                                          @include('admin.layouts.table.java_price')
+                                          
+
+ @include('admin.layouts.table.selectbox', [ 'allforeachs' => $price_types ,  'input_name' => 'name'  ,  'name_select' => 'هزینه دوره' ,  'value' =>   old('price_type_id') , 'required'=>'required'  , 'index_id'=>'price_type_id' ])
+ <div  id="view_price">
+
+</div>
 
 <hr>
 <div class="form-group" >

@@ -13,6 +13,12 @@ class PaymentType extends Model
         'status'  ,
    ];
 
+   
+public function course_request()
+{
+    return $this->hasOne(CourseRequest::class , 'price_type_id' );
+} 
+
 
 
 }

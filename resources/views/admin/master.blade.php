@@ -10,16 +10,16 @@
 
          {{ $tabTitle ?? '' }}</title>
 
-
-    <link rel="stylesheet" href="{{ asset('template/assets/vendors/font-awesome/css/font-awesome.min.css') }}">
+{{--  
+   <link rel="stylesheet" href="{{ asset('template/assets/vendors/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template/assets/vendors/core/core.css') }}">
     <link rel="stylesheet" href="{{ asset('template/assets/fonts/feather-font/css/iconfont.css') }}">
     <link rel="stylesheet" href="{{ asset('template/assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('template/assets/css/demo_1/style.css') }}">
-    <link rel="shortcut icon" href="{{ asset('template/assets/images/favicon.png') }}">
+   <link rel="stylesheet" href="{{ asset('template/assets/css/demo_1/style.css') }}">
+    <link rel="shortcut icon" href="{{ asset('template/assets/images/favicon.png') }}">  
 
-    <link data-minify="1" rel='stylesheet'   href="{{ asset('template/assets/css/mystyle.css') }}"  type='text/css' media='all' />
-
+    <link data-minify="1" rel='stylesheet'   href="{{ asset('template/assets/css/mystyle.css') }}"  type='text/css' media='all' />  
+ --}}
 
 
 

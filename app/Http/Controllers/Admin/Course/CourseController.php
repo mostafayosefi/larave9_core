@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin\Course;
 
 use Illuminate\Http\Request;
 use App\Models\Course\Course;
-use App\Http\Controllers\Controller;
-use App\Models\Course\CourseType;
 use App\Models\Course\Teacher;
+use App\Models\Course\PriceType;
+use App\Models\Course\CourseType;
+use App\Models\Course\PaymentType;
+use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CourseController extends Controller
@@ -20,9 +22,11 @@ class CourseController extends Controller
 
 
     public function create(){
-        $course_types=CourseType::all();
+        $course_types=CourseType::all(); 
         $teachers=Teacher::where([  ['status' , 'active'], ])->get();
-        return view('admin.Course.course.create' , compact([ 'course_types', 'teachers' ]) );
+        $price_types = PriceType::all();
+        $payment_types = PaymentType::all();
+        return view('admin.Course.course.create' , compact([ 'course_types', 'teachers', 'price_types', 'payment_types' ]) );
     }
 
     public function edit($id){
@@ -30,7 +34,10 @@ class CourseController extends Controller
         $course=Course::find($id);
         $course_types=CourseType::all();
         $teachers=Teacher::where([  ['status' , 'active'], ])->get();
-        return view('admin.Course.course.edit' , compact([ 'course' , 'course_types', 'teachers' ]) );
+        $price_types = PriceType::all();
+        $payment_types = PaymentType::all();
+        return view('admin.Course.course.edit' , compact([ 'course' , 'course_types', 'teachers' 
+        , 'price_types', 'payment_types' ]) );
  
     }
 
@@ -45,8 +52,9 @@ class CourseController extends Controller
         ]);
 
         $data = $request->all();
+        // dd($request);
         $data ['type']='null';
-        $data ['price']='null';
+        $data['price'] = str_rep_price($data['price']);
         $data['image']  =  uploadFile($request->file('image'),'images/courses','');
 
        Course::create($data);
@@ -72,6 +80,7 @@ class CourseController extends Controller
         ]);
         $course=Course::find($id);
         $data = $request->all();
+        $data['price'] = str_rep_price($data['price']);
         $data['image']= $course->image;
         $data['image']  =  uploadFile($request->file('image'),'images/courses',$course->image);
         $course->update($data);

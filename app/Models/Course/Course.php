@@ -8,7 +8,7 @@ class Course extends Model
 {
 
     protected $fillable = [
-        'name', 'type', 'short' ,'image' , 'status' , 'text', 'price', 'teacher_id','course_type_id',
+        'name', 'type', 'short' ,'image' , 'status' , 'text', 'price', 'teacher_id','course_type_id','price_type_id',
     ];
 
 
@@ -32,11 +32,8 @@ class Course extends Model
 
 
 
-    public function price_type()
-    {
-        return $this->hasOne(ExamResponse::class , 'price_type_id' );
+    public function price_type() {
+        return $this->belongsTo(PriceType::class );
     }
-
-
 
 }

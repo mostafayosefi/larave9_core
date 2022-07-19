@@ -1,0 +1,165 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-size: 13px;
+    background-color: rgb(244, 246, 247);
+}
+.navbar-inverse {
+    background-color: #4f8a9a;
+    border-color: #1967be;
+}
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    
+}
+select {
+    width: 190px;
+}
+.pnuBtn{
+            height: 33px!important;
+    padding: 4px 20px;
+    
+    }
+.btn{
+    font-size:13px!important;
+}
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+     
+    height: 35px;
+    font-size: 12px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* buttons and links extension to use brackets: [ click me ] */
+.btn-bracketed::before {
+    display:inline-block;
+    content: "[";
+    padding-right: 0.5em;
+}
+.btn-bracketed::after {
+    display:inline-block;
+    content: "]";
+    padding-left: 0.5em;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"]
+{
+    width: 100%;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+  /* Hide captions */
+  .carousel-caption {
+    display: none
+  }
+   .body-content {
+   margin-top:20px;
+    
+}
+navbar.less:380
+.navbar-right {
+    float: left!important;
+    margin-right: -15px;
+}
+}
+
+
+	@media 
+	only screen and (max-width: 760px),
+	(min-device-width: 768px) and (max-device-width: 1024px)  {
+	
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr { 
+			display: block; 
+		}
+		
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr { 
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+		
+		tr { border: 1px solid #ccc;direction:ltr; }
+		
+		td { 
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee; 
+			position: relative;
+			padding-left: 50%; 
+		}
+		
+		td:after { 
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 6px;
+			right: 6px;
+			 
+			padding-right: 10px; 
+			white-space: nowrap;
+		}
+		
+		/*
+		Label the data
+		*/
+		
+	 
+	}
+	
+	/* Smartphones (portrait and landscape) ----------- */
+	@media only screen
+	and (min-device-width : 320px)
+	and (max-device-width : 480px) {
+		body {
+			padding: 0;
+			margin: 0;
+			/* width: 320px; */
+			}
+		}
+	
+	/* iPads (portrait and landscape) ----------- */
+	@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+		body { 
+			width: 495px; 
+		}
+	}
+
+.box {
+    text-align: right;
+    font-family: Samim,'Samim',tahoma;
+    margin-bottom: 20px;
+    border: 1px;
+    min-height: 40px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 4px 10px rgba(0,0,0,0.06);
+    overflow: auto;
+    background-color: white;
+    border-radius: 0px;
+}
+@font-face {
+    font-family: 'Samim';
+    src: url('fonts/Samim.eof') format('eot'), url('fonts/Samim-Bold.eof') format('eot'), url('fonts/Samim.woff') format('woff'), url('fonts/Samim-bold.woff') format('woff');
+}
+@font-face {
+    font-family: 'Vazir';
+    src: url('fonts/Vazir.eof') format('eot'), url('fonts/Vazir-Bold.eof') format('eot'), url('fonts/Vazir.woff') format('woff'), url('fonts/Vazir-bold.woff') format('woff');
+}
+
+
+h1, h2, h3, h4,h5,h6, div, section, ul, li, menu-item,body,p {
+    font-family: Vazir,Tahoma;
+}
